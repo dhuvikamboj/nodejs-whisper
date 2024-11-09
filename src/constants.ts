@@ -9,6 +9,9 @@ export const MODELS_LIST = [
 	'medium.en',
 	'large-v1',
 	'large',
+	'large-v2',
+	'large-v3',
+	'large-v3-turbo',
 ]
 
 export const MODELS = [
@@ -22,6 +25,9 @@ export const MODELS = [
 	'ggml-medium.bin',
 	'ggml-large-v1.bin',
 	'ggml-large.bin',
+	'ggml-large-v2.bin',
+	'ggml-large-v3.bin',
+	'ggml-large-v3-turbo.bin',
 ]
 
 export const MODEL_OBJECT = {
@@ -35,6 +41,9 @@ export const MODEL_OBJECT = {
 	'medium.en': 'ggml-medium.en.bin',
 	'large-v1': 'ggml-large-v1.bin',
 	large: 'ggml-large.bin',
+	'large-v2': 'ggml-large-v2.bin',
+	'large-v3': 'ggml-large-v3.bin',
+	'large-v3-turbo': 'ggml-large-v3-turbo.bin',
 }
 
 export const DEFAULT_MODEL = 'tiny.en'

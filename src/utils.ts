@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import shell from 'shelljs'
+const pathToFfmpeg = require('ffmpeg-static')
 
 export const checkIfFileExists = (filePath: string) => {
 	if (!fs.existsSync(filePath)) {
@@ -47,7 +48,7 @@ export const convertToWavType = async (inputFilePath, verbose) => {
 				console.log(`[Nodejs-whisper] File has a .wav extension but is not a valid WAV, overwriting...`)
 			}
 			// Overwrite the original WAV file
-			const command = `ffmpeg -nostats -loglevel error -y -i "${inputFilePath}" -ar 16000 -ac 1 -c:a pcm_s16le "${inputFilePath}"`
+			const command = `${pathToFfmpeg} -nostats -loglevel error -y -i "${inputFilePath}" -ar 16000 -ac 1 -c:a pcm_s16le "${inputFilePath}"`
 			const result = shell.exec(command, { silent: !verbose })
 			if (result.code !== 0) {
 				throw new Error(`[Nodejs-whisper] Failed to convert audio file: ${result.stderr}`)
@@ -63,7 +64,7 @@ export const convertToWavType = async (inputFilePath, verbose) => {
 		if (verbose) {
 			console.log(`[Nodejs-whisper] Converting to a new WAV file: ${outputFilePath}`)
 		}
-		const command = `ffmpeg -nostats -loglevel error -y -i "${inputFilePath}" -ar 16000 -ac 1 -c:a pcm_s16le "${outputFilePath}"`
+		const command = `${pathToFfmpeg}  -nostats -loglevel error -y -i "${inputFilePath}" -ar 16000 -ac 1 -c:a pcm_s16le "${outputFilePath}"`
 		const result = shell.exec(command, { silent: !verbose })
 		if (result.code !== 0) {
 			throw new Error(`[Nodejs-whisper] Failed to convert audio file: ${result.stderr}`)
